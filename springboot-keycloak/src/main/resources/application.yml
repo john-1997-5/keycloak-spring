@@ -1,0 +1,19 @@
+server:
+  servlet:
+    context-path: /api
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8085/realms/SpringBootKeycloak
+          jwt-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+
+jwt:
+  auth:
+    converter:
+      resource-id: springboot-keycloak-client
+      principal-attribute: preferred_username
+logging:
+  level:
+    org.springframework.security: DEBUG
